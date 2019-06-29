@@ -1,0 +1,10 @@
+@import 'var.scss';
+
+.app {
+  background-color: $red;
+  transition: all .3s ease;
+  .aps {
+    width: 50px;
+    @include ellipsis;
+  }
+}
