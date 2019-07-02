@@ -1,14 +1,26 @@
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const theme = require('../src/assets/antdTheme')
+const theme = require('../src/assets/antdTheme');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { resolve } = require('./utils')
 
-function resolve(relatePath) {
-  return path.join(__dirname, relatePath);
+const env = require('./env.json');
+const config = require('./config.js');
+const oriEnv = env[config.APP_ENV]
+Object.assign(oriEnv, {
+	APP_ENV: config.APP_ENV
+})
+
+const defineEnv = {}
+for (let key in oriEnv) {
+	defineEnv[`process.env.${key}`] = JSON.stringify(oriEnv[key])
 }
+
 module.exports = {
   entry: resolve('../src/index.tsx'),
   output: {
-    filename: 'bundle.js',
+    filename: 'js/[name][chunkhash].js',
     path: resolve('../dist')
   },
   module: {
@@ -21,14 +33,20 @@ module.exports = {
       test: /\.css$/,
       exclude: /node_modules/,
       use: [
-        'style-loader',
-        'css-loader'
+        config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
+        {
+          loader: 'css-loader', // 解析 @import 和 url() 为 import/require() 方式处理
+          options: {
+            importLoaders: 1 // 0 => 无 loader(默认); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+          }
+        },
+        'postcss-loader'
       ]
     }, {
       test: /\.less$/,
       include: resolve('../node_modules'),
       use: [
-        'style-loader',
+        config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
         'css-loader',
         'postcss-loader',
         {
@@ -43,7 +61,7 @@ module.exports = {
       test: /\.scss$/,
       include: resolve('../src'),
       use: [
-        'style-loader',
+        config.extractCss ? MiniCssExtractPlugin.loader : 'style-loader',
         'css-loader',
         'postcss-loader',
         {
@@ -91,6 +109,7 @@ module.exports = {
       template: 'public/index.html',
       inject: true
     }),
+    new webpack.DefinePlugin(defineEnv)
   ],
   devServer: {
     host: 'localhost',
@@ -101,5 +120,14 @@ module.exports = {
     },
     inline: true,
     hot: true,
+  },
+  performance: { // 性能提示，可以提示过大文件
+    hints: "warning", // 性能提示开关 false | "error" | "warning"
+    maxAssetSize: 100000, // 生成的文件最大限制 整数类型（以字节为单位）
+    maxEntrypointSize: 100000, // 引入的文件最大限制 整数类型（以字节为单位）
+    assetFilter: function(assetFilename) {
+        // 提供资源文件名的断言函数
+        return (/\.(png|jpe?g|gif|svg)(\?.*)?$/.test(assetFilename))
+    }
   }
 }
