@@ -29,6 +29,10 @@ const DLL_PATH = '../dll'
 const prodConfig = {
   mode: 'production',
   devtool: 'source-map',
+  output: {
+    filename: 'js/[name][chunkhash].js',
+    path: resolve('../dist')
+  },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',

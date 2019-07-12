@@ -16,23 +16,23 @@ const devConfig={
   ],
   devServer: {
     host: 'localhost',
-    port: 3000,
+    port: 3001,
     historyApiFallback: true,
     overlay: {//当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
       errors: true
     },
     inline: true,
     hot: true,
-    // proxy: {
-    //   '/api/v1': {
-    //     target: '',
-    //     ws: true,
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //       '^/api/v1': '/api/v1'
-    //     }
-    //   }
-    // }
+    proxy: {
+      '/api/v1': {
+        target: 'http://127.0.0.1:7001',
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api/v1': '/api/v1'
+        }
+      }
+    }
   },
 }
 

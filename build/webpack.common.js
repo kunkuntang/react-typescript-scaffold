@@ -20,14 +20,14 @@ for (let key in oriEnv) {
 module.exports = {
   entry: resolve('../src/index.tsx'),
   output: {
-    filename: 'js/[name][chunkhash].js',
+    filename: 'js/[name][hash].js',
     path: resolve('../dist')
   },
   module: {
     rules: [{
       test: /\.(j|t)sx?$/,
-      include: resolve('../src'),
-      use: ['babel-loader'],
+      include: [resolve('../src')],
+      use: ['babel-loader', 'ts-loader'],
       exclude: /node_modules/
     }, {
       test: /\.css$/,
