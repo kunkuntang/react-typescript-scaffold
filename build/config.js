@@ -2,7 +2,9 @@ const argv = require('yargs-parser')(process.argv.slice(4));
 const APP_ENV = argv.env || 'dev';
 const bundleAnalyz = argv.analyz
 
-const STATICDOMAIN = process.env.APP_ENV === 'prod' ? '/' : ''
+process.env.APP_ENV = APP_ENV
+
+const STATICDOMAIN = APP_ENV === 'prod' ? 'http://huawei.lenkuntang.cn/test-react-typescript/dist/' : ''
 
 module.exports = {
   assetsPublicPath: APP_ENV === 'dev' ? '/' : `${STATICDOMAIN}/`,

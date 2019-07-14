@@ -31,7 +31,8 @@ const prodConfig = {
   devtool: 'source-map',
   output: {
     filename: 'js/[name][chunkhash].js',
-    path: resolve('../dist')
+    path: resolve('../dist'),
+    publicPath: config.assetsPublicPath,
   },
   plugins: [
     new HtmlWebpackPlugin({
