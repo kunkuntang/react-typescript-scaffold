@@ -11,12 +11,15 @@ import configureStore from './configureStore';
 
 export type TStoreState = {
   user: User;
+  userList: User[],
 }
 
 const storeState = {
   user: new User({
-    username: 'test'
-  })
+    username: 'test',
+    email: 'test@test.com'
+  }),
+  userList: []
 }
 
 const store = configureStore(storeState)

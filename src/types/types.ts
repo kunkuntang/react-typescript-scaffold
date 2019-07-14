@@ -1,4 +1,4 @@
-import { USER_LOGIN } from "./actionType";
+import { USER_LOGIN, USER_REGIST } from "./actionType";
 import { User } from "@/model/user";
 
 // common action type
@@ -12,4 +12,9 @@ export interface ILogin {
   userInfo: Partial<User>;
 }
 
-export type AllUSERACT = ILogin | IActionType;
+export interface IRegist {
+  type: USER_REGIST;
+  userInfo: Partial<User>;
+}
+
+export type AllUSERACT = ILogin | IRegist | IActionType;

@@ -4,31 +4,23 @@ import loadable from '@loadable/component';
 import { Router, Route } from 'react-router';
 import { Link } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import HomeLayout from './components/layout';
 
 const HomeComponent = loadable(() => import('./views/Home'))
-const AboutComponent = loadable(() => import('./views/About'))
+const RegistComponent = loadable(() => import('./views/Regist'))
 
-// const Img = require('./assets/img/img.jpeg')
+export const history = createBrowserHistory();
+
 class App extends Component {
   render() {
     return (
       <div className="app">
-        Hello React
-        {/* <img src={Img} /> */}
-        {/* <img src="/src/asset/img.jpeg" alt=""/> */}
-        <Router history={createBrowserHistory()}>
-          <ul>
-            <li>
-              <Link to="/">To Home</Link>
-            </li>
-            <li>
-              <Link to="/about">To About</Link>
-            </li>
-          </ul>
-          <Route exact path="/" component={HomeComponent}></Route>
-          <Route path="/about" component={AboutComponent}></Route>
+        <Router history={history}>
+          <HomeLayout>
+            <Route exact path="/" component={HomeComponent}></Route>
+            <Route path="/regist" component={RegistComponent}></Route>
+          </HomeLayout>
         </Router>
-        <p className="aps">hahahahahahahhahaha</p>
       </div>
     );
   }

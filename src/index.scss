@@ -1,8 +1,12 @@
 @import 'var.scss';
 
 .app {
-  background-color: $red;
+  // background-color: $red;
   transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
   .aps {
     width: 50px;
     @include ellipsis;

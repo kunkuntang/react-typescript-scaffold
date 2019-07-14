@@ -23,16 +23,16 @@ const devConfig={
     },
     inline: true,
     hot: true,
-    proxy: {
-      '/api/v1': {
-        target: 'http://127.0.0.1:7001',
-        ws: true,
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api/v1': '/api/v1'
-        }
-      }
-    }
+    // proxy: {
+    //   '/api/v1': {
+    //     target: 'http://127.0.0.1:7001',
+    //     ws: true,
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/api/v1': '/api/v1'
+    //     }
+    //   }
+    // }
   },
 }
 
