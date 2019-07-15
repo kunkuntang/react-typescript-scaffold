@@ -1,4 +1,4 @@
-import { BaseEntity, ContainerEntity } from "./common";
+import { ContainerEntity } from "./common";
 
 export type IUser = {
   username: string;

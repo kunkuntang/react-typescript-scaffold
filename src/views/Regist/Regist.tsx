@@ -18,10 +18,7 @@ class Regist extends Component<IProps> {
   constructor(props: any) {
     super(props)
   }
-
-  componentDidMount() {
-    console.log(this.props)
-  }
+  
   regist = () => {
     this.props.regist(new User())
   }

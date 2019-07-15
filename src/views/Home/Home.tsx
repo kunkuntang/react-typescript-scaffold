@@ -24,9 +24,6 @@ class Home extends Component<IProps, IState> {
   constructor(props: any) {
     super(props)
   }
-  componentDidMount() {
-    console.log(this.props);
-  }
 
   render() {
     const { userList } = this.props;

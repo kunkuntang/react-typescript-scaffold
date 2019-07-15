@@ -4,7 +4,7 @@ const bundleAnalyz = argv.analyz
 
 process.env.APP_ENV = APP_ENV
 
-const STATICDOMAIN = APP_ENV === 'prod' ? 'http://huawei.lenkuntang.cn/test-react-typescript/dist/' : ''
+const STATICDOMAIN = APP_ENV === 'prod' ? 'http://huawei.lenkuntang.cn/react-typescript/' : ''
 
 module.exports = {
   assetsPublicPath: APP_ENV === 'dev' ? '/' : `${STATICDOMAIN}/`,

@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware } from "redux";
-import { User } from "./model/user";
 import rootReducer from "./reducers";
 import { ILogin } from "./types/types";
 import { TStoreState } from ".";

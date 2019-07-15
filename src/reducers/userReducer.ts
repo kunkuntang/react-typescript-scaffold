@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGIST } from "@/types/actionType";
+import { USER_LOGIN } from "@/types/actionType";
 import { AllUSERACT } from "@/types/types";
 import { User } from "@/model/user";
 

@@ -7,7 +7,7 @@ import * as actions from '@/actions';
 import { IRegist } from '@/types/types';
 import { Redirect, withRouter } from 'react-router';
 import { createBrowserHistory, History } from 'history';
-import { history } from '@/App';
+import { history } from '@/utils/history';
 
 // const history = createBrowserHistory();
 
@@ -59,7 +59,6 @@ class RegistrationForm extends React.Component<UserFormProps> {
   };
 
   render() {
-    console.log(this.props)
     const { getFieldDecorator } = this.props.form;
 
     const formItemLayout = {

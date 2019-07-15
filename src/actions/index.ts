@@ -1,10 +1,7 @@
 import { USER_LOGIN, USER_REGIST } from "@/types/actionType";
-import { IActionType, ILogin, IRegist } from "@/types/types";
-import Axios from 'axios'
-import { User, UserServerEntity } from "@/model/user";
+import { ILogin, IRegist } from "@/types/types";
+import { User } from "@/model/user";
 import { post } from "@/utils/http";
-import { Dispatch } from "react";
-import { BaseEntity } from "@/model/common";
 
 export function regist(userInfo: Partial<User>):IRegist {
   console.log('userInfo', userInfo)
