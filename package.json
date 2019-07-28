@@ -1,7 +1,10 @@
 {
-  "name": "react-typescript",
-  "version": "1.0.0",
+  "name": "{{projectName}}",
+  "version": "{{projectVersion}}",
+  "description": "{{projectDescription}}",
+  "author": "{{author}}",
   "main": "index.js",
+  "private": true,
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -53,7 +56,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config build/webpack.dev.js --mode development --open",
     "test": "webpack --config build/webpack.test.js --mode production --env test",
-    "pre-build": "webpack --config build/webpack.prod.js --mode production --env pre",
+    "pre-build": "webpack --config build/we bpack.prod.js --mode production --env pre",
     "prod-build": "webpack --config build/webpack.prod.js --mode production --env prod",
     "analyz": "webpack --config build/webpack.prod.js --mode production --env prod --analyz",
     "dll": "webpack --config build/webpack.dll.js"
