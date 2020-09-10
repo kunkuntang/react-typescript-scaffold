@@ -48,7 +48,7 @@
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1",
-    "yargs-parser": "^13.1.1"
+    "yargs-parser": "^13.1.2"
   },
   "scripts": {
     "dev": "webpack-dev-server --config build/webpack.dev.js --mode development --open",
